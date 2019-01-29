@@ -47,7 +47,7 @@ public class MenuIO {
 								movieCount++;
 								System.out.println(movieCount + ". " + movieTitle);
 							}
-							System.out.println("Select a movie title: (1-" + movieCount + ") ");
+							System.out.print("Select a movie title: (1-" + movieCount + ") ");
 							int index = MovieApp.userInputInt(movieCount);
 							int menuCount = 0;
 							String title = "";
@@ -57,7 +57,7 @@ public class MenuIO {
 									title = MovieTitle;
 								}
 							}
-							System.out.println("You selected " + title);
+							System.out.println("\nYou selected " + title);
 							MovieApp.addToCart(MovieApp.userInputString(title));
 							retry = MovieApp.retry("select another " + category + " movie");
 						}
@@ -81,13 +81,6 @@ public class MenuIO {
 			menu.add(new MenuItem(count, title));
 			count++;
 		}
-		return new Menu(menu);
-	}
-	
-	public static Menu menuError() {
-		ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
-		menu.add(new MenuItem(1, "Error, Select 1 to Try Again"));
-		
 		return new Menu(menu);
 	}
 	
