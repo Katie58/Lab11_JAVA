@@ -34,19 +34,19 @@ public class MenuIO {
 		int count = 1;
 		for (String category : MovieIO.categories()) {
 			if (count == select) {
-				printMulti('=', category.length() + 17);
-				System.out.println("\n| " + category.substring(0, 1).toUpperCase() + category.substring(1) + " Movie Titles |");
-				printMulti('=', category.length() + 17);
-				System.out.println();
-				for (int i = 1; i <= MovieIO.categories().size(); i++) {
-					if (i == select) {
-						int movieCount = 0;
-						for (String movieTitle : MovieIO.moviesInCategory(category)) {
-							movieCount++;
-							System.out.println(movieCount + ". " + movieTitle);
-						}
-						boolean retry = true;
-						while(retry) {
+				boolean retry = true;
+				while(retry) {	
+					printMulti('=', category.length() + 17);
+					System.out.println("\n| " + category.substring(0, 1).toUpperCase() + category.substring(1) + " Movie Titles |");
+					printMulti('=', category.length() + 17);
+					System.out.println();
+					for (int i = 1; i <= MovieIO.categories().size(); i++) {
+						if (i == select) {					
+							int movieCount = 0;
+							for (String movieTitle : MovieIO.moviesInCategory(category)) {
+								movieCount++;
+								System.out.println(movieCount + ". " + movieTitle);
+							}
 							System.out.println("Select a movie title: (1-" + movieCount + ") ");
 							int index = MovieApp.userInputInt(movieCount);
 							int menuCount = 0;
@@ -59,7 +59,7 @@ public class MenuIO {
 							}
 							System.out.println("You selected " + title);
 							MovieApp.addToCart(MovieApp.userInputString(title));
-							retry = MovieApp.retry("select another movie");
+							retry = MovieApp.retry("select another " + category + " movie");
 						}
 					}
 				}				
